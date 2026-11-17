@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aymen Jaouadi – Consultant Senior .NET, SharePoint, Microsoft 365</title>
+<meta name="description" content="Team Leader et consultant senior .NET, SharePoint et Power Platform. 19 ans d’expérience.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#F2F5F8;--surface:#FFFFFF;--ink:#0F2236;--muted:#55677A;--line:#D5DEE7;
+  --accent:#1F5FBF;--accent-soft:#DCE8F8;--on-accent:#FFFFFF;
+  --display:"Bricolage Grotesque","Segoe UI",Arial,sans-serif;
+  --body:"Source Sans 3","Segoe UI",Arial,sans-serif;
+  color-scheme:light;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0C1622;--surface:#132233;--ink:#E6EEF6;--muted:#93A6BA;--line:#223549;
+    --accent:#6AAAFF;--accent-soft:#17304F;--on-accent:#0C1622;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0C1622;--surface:#132233;--ink:#E6EEF6;--muted:#93A6BA;--line:#223549;
+  --accent:#6AAAFF;--accent-soft:#17304F;--on-accent:#0C1622;color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 var(--body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1080px,100% - 2.5rem);margin-inline:auto}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;letter-spacing:-.02em}
+.progress{position:fixed;left:0;top:env(safe-area-inset-top,0px);height:3px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;z-index:40}
+
+/* navigation */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:60px}
+.nav .logo{font:800 1.1rem var(--display);text-decoration:none}
+.nav ul{display:flex;gap:1.4rem;list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;color:var(--muted);font-weight:600;font-size:.95rem;transition:color .2s}
+.nav ul a:hover{color:var(--accent)}
+.theme{border:1px solid var(--line);background:var(--surface);color:var(--ink);width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:1.05rem}
+@media(max-width:760px){.nav ul{display:none}}
+
+/* hero */
+.hero{padding:clamp(3rem,8vw,6rem) 0 3rem}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:3rem;align-items:center}
+@media(max-width:900px){.hero .wrap{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(2.8rem,7vw,5rem);font-weight:800}
+.mono{display:grid;place-items:center;width:72px;height:72px;margin-bottom:1.4rem;border-radius:20px;background:var(--accent);color:var(--on-accent);font:800 1.85rem/1 var(--display);letter-spacing:-.04em;box-shadow:0 0 0 6px var(--accent-soft)}
+.hero .role{font:700 clamp(1.15rem,2.4vw,1.5rem)/1.3 var(--display);color:var(--accent);margin:1rem 0}
+.hero p.lead{max-width:34rem;color:var(--muted);margin:0 0 1.6rem}
+.btns{display:flex;flex-wrap:wrap;gap:.8rem}
+.btn{display:inline-block;padding:.8rem 1.4rem;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid var(--accent);transition:transform .2s,background .2s}
+.btn.primary{background:var(--accent);color:var(--on-accent)}
+.btn:hover{transform:translateY(-2px)}
+.facts{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;margin:1.8rem 0 0;padding:0;list-style:none;color:var(--muted);font-size:.95rem}
+.facts b{color:var(--ink)}
+
+/* frise technologies : le moment animé de la page */
+.tl{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:1.5rem 1.5rem 1rem}
+.tl h2{font-size:1.05rem;margin-bottom:1.1rem}
+.lane{margin-bottom:.95rem}
+.lane span{display:block;font-size:.85rem;font-weight:600;color:var(--muted);margin-bottom:.25rem}
+.track{height:14px;border-radius:7px;background:var(--accent-soft);position:relative;overflow:hidden}
+.bar{position:absolute;top:0;bottom:0;border-radius:7px;background:var(--accent);transform:scaleX(0);transform-origin:left}
+.axis{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:.4rem;margin-top:1.2rem;font-size:.8rem;color:var(--muted)}
+.tl small{display:block;margin:.6rem 0 .3rem;color:var(--muted);font-size:.78rem}
+.go .bar{animation:draw 1s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--i)*.18s + .3s)}
+@keyframes draw{to{transform:scaleX(1)}}
+.hero .intro{opacity:0;transform:translateY(14px);animation:rise .8s .05s forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* sections */
+section.s{padding:3.5rem 0;border-top:1px solid var(--line)}
+section.s>.wrap>h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:1.8rem}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.2rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.3rem 1.4rem}
+.card h3{font-size:1.05rem;margin-bottom:.7rem}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin:0;padding:0;list-style:none}
+.chips li{background:var(--accent-soft);color:var(--ink);border-radius:8px;padding:.15rem .6rem;font-size:.9rem;transition:background .2s,color .2s}
+.chips li:hover{background:var(--accent);color:var(--on-accent)}
+
+/* parcours */
+.sub{color:var(--muted);margin:-1rem 0 1.4rem;max-width:40rem}
+#all{background:transparent;color:var(--accent);cursor:pointer;font:600 .95rem var(--body);padding:.5rem 1.1rem;margin-bottom:1.6rem}
+.grp{position:relative;margin-left:7px;padding:0 0 1.4rem 1.6rem;border-left:2px solid var(--line)}
+.grp:last-child{padding-bottom:0}
+.grp>header{position:relative;margin-bottom:.9rem}
+.grp>header::before{content:"";position:absolute;left:calc(-1.6rem - 9px);top:.35rem;width:16px;height:16px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--bg)}
+.grp h3{font-size:1.35rem}
+.grp header p{margin:.15rem 0 0;color:var(--muted);font-size:.95rem}
+.grp details.job{margin-bottom:.6rem}
+details.job{background:var(--surface);border:1px solid var(--line);border-radius:16px;margin-bottom:.8rem;transition:border-color .2s}
+details.job[open]{border-color:var(--accent)}
+details.job summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:.15rem 1rem;padding:.9rem 1.2rem}
+details.job summary::-webkit-details-marker{display:none}
+details.job summary b{font:700 1.05rem var(--display)}
+details.job summary em{font-style:normal;color:var(--muted);font-size:.92rem;grid-column:1}
+details.job summary i{grid-row:1/3;grid-column:2;align-self:center;font-style:normal;color:var(--accent);font-weight:600;white-space:nowrap}
+details.job summary::after{content:"";}
+.body{padding:0 1.2rem 1rem;animation:open .35s ease}
+@keyframes open{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.body ul{margin:0 0 .8rem;padding-left:1.2rem}
+.body li{margin-bottom:.3rem;max-width:62ch}
+.body p{margin:0;color:var(--muted);font-size:.9rem}
+
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+.card p{margin:0 0 .5rem}
+.card p span{color:var(--muted)}
+.contact{text-align:left}
+.contact a.mail{font:800 clamp(1.5rem,4.5vw,2.8rem) var(--display);text-decoration:none;color:var(--accent);word-break:break-all}
+footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem}
+
+/* fond animé : halos qui suivent les sections + grille en parallaxe */
+.bg{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;transition:filter 2s ease}
+.grid{position:absolute;inset:-60px 0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;background-position:0 calc(var(--sy,0) * -.12px);opacity:.55;-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 35%,#000,transparent);mask-image:radial-gradient(ellipse 80% 70% at 50% 35%,#000,transparent)}
+.blob{position:absolute;border-radius:50%;opacity:.16;translate:var(--x,0) var(--y,0);transition:translate 2.2s cubic-bezier(.25,.6,.25,1);will-change:transform}
+.b1{left:-10vmax;top:-10vmax;width:55vmax;height:55vmax;background:radial-gradient(circle,var(--accent) 0%,transparent 65%);--x:var(--x1,0px);--y:var(--y1,0px);animation:drift 26s ease-in-out infinite}
+.b2{right:-15vmax;bottom:-15vmax;width:50vmax;height:50vmax;background:radial-gradient(circle,var(--accent) 0%,transparent 65%);--x:var(--x2,0px);--y:var(--y2,0px);animation:drift 32s ease-in-out infinite reverse}
+.b3{left:30vw;top:30vh;width:38vmax;height:38vmax;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 45%,#19B5A5) 0%,transparent 65%);--x:var(--x3,0px);--y:var(--y3,0px);animation:drift 38s ease-in-out infinite}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(4vw,3vh) scale(1.12)}}
+body[data-sec="1"]{--x1:30vw;--y1:20vh;--x2:-20vw;--y2:-25vh;--x3:-20vw;--y3:20vh}
+body[data-sec="2"]{--x1:5vw;--y1:55vh;--x2:-40vw;--y2:-5vh;--x3:25vw;--y3:-20vh}
+body[data-sec="3"]{--x1:50vw;--y1:30vh;--x2:-10vw;--y2:-40vh;--x3:-30vw;--y3:-10vh}
+body[data-sec="4"]{--x1:20vw;--y1:60vh;--x2:-30vw;--y2:-55vh;--x3:10vw;--y3:10vh}
+body[data-sec="1"] .bg{filter:hue-rotate(22deg)}
+body[data-sec="2"] .bg{filter:hue-rotate(-18deg)}
+body[data-sec="3"] .bg{filter:hue-rotate(38deg)}
+body[data-sec="4"] .bg{filter:hue-rotate(-30deg)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .blob{opacity:.26}}
+:root[data-theme="dark"] .blob{opacity:.26}
+@media(prefers-reduced-motion:reduce){.blob{animation:none;transition:none}.bg{transition:none}}
+.rv{opacity:0;transform:translateY(12px);transition:opacity .6s,transform .6s}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .bar{transform:none!important;animation:none!important}
+  .hero .intro,.rv{opacity:1;transform:none;animation:none;transition:none}
+  .body{animation:none}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="pg"></div>
+<div class="bg" aria-hidden="true"><div class="grid"></div><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">Aymen Jaouadi</a>
+    <ul>
+      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#parcours">Parcours</a></li>
+      <li><a href="#formation">Formation</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="theme" id="theme" aria-label="Changer de thème">◐</button>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div class="intro">
+      <div class="mono" aria-hidden="true">AJ</div>
+      <h1>Aymen Jaouadi</h1>
+      <p class="role">Team Leader et consultant senior<br>.NET, SharePoint, Microsoft 365</p>
+      <p class="lead">Je conçois des applications métier sur la plateforme Microsoft, des workflows SharePoint aux solutions SPFx et Power Platform, avec 19 ans de terrain et une pratique du cadrage, de la spécification et de l’encadrement d’équipe.</p>
+      <div class="btns">
+        <a class="btn primary" href="#contact">Me contacter</a>
+        <a class="btn" href="#parcours">Voir mon parcours</a>
+      </div>
+      <ul class="facts">
+        <li><b>19 ans</b> d’expérience</li>
+        <li><b>10 projets</b> chez EDF depuis 2017</li>
+        <li>Basé à <b>Cergy</b></li>
+      </ul>
+    </div>
+
+    <div class="tl rv in" id="tl" role="img" aria-label="Frise des technologies pratiquées de 2006 à 2026 : .NET depuis 2006, SharePoint depuis 2013, SPFx et React depuis 2017, Power Platform depuis 2022">
+      <h2>Vingt ans de technologies Microsoft</h2>
+      <div class="lane"><span>.NET et C#</span><div class="track"><div class="bar" style="--i:0;left:0;width:100%"></div></div></div>
+      <div class="lane"><span>PHP et Joomla</span><div class="track"><div class="bar" style="--i:1;left:0;width:15%"></div></div></div>
+      <div class="lane"><span>Cadrage et Team Lead</span><div class="track"><div class="bar" style="--i:2;left:35%;width:20%"></div></div></div>
+      <div class="lane"><span>SharePoint</span><div class="track"><div class="bar" style="--i:3;left:35%;width:65%"></div></div></div>
+      <div class="lane"><span>SPFx, React, TypeScript</span><div class="track"><div class="bar" style="--i:4;left:55%;width:45%"></div></div></div>
+      <div class="lane"><span>Power Platform</span><div class="track"><div class="bar" style="--i:5;left:80%;width:20%"></div></div></div>
+      <div class="axis" aria-hidden="true"><span>2006</span><span>2010</span><span>2014</span><span>2018</span><span>2022</span><span>2026</span></div>
+      <small>Périodes indicatives, tirées des missions.</small>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="competences">
+  <div class="wrap">
+    <h2>Compétences</h2>
+    <div class="skills">
+      <div class="card rv"><h3>Microsoft 365 et SharePoint</h3><ul class="chips"><li>SharePoint 2010 à SE</li><li>SharePoint Online</li><li>Power Platform</li><li>Power Automate</li><li>Entra ID</li><li>Timer Jobs</li><li>Workflow Manager</li></ul></div>
+      <div class="card rv"><h3>Développement SharePoint</h3><ul class="chips"><li>SPFx</li><li>React</li><li>PnPjs</li><li>CSOM</li><li>JSOM</li><li>REST API</li><li>SharePoint Designer</li><li>PnP PowerShell</li></ul></div>
+      <div class="card rv"><h3>.NET</h3><ul class="chips"><li>C#</li><li>VB.NET</li><li>.NET 2.0 à 4.8</li><li>ASP.NET MVC</li><li>WPF</li><li>WinForms</li><li>LINQ</li><li>Entity Framework</li><li>WCF</li></ul></div>
+      <div class="card rv"><h3>Web et front-end</h3><ul class="chips"><li>TypeScript</li><li>JavaScript</li><li>HTML5/CSS3</li><li>jQuery</li><li>Bootstrap</li><li>AngularJS</li><li>Knockout</li><li>SignalR</li><li>PHP</li></ul></div>
+      <div class="card rv"><h3>Données et reporting</h3><ul class="chips"><li>SQL Server</li><li>Oracle</li><li>MySQL</li><li>Google BigQuery</li><li>Crystal Reports</li><li>Highcharts</li><li>Chart.js</li></ul></div>
+      <div class="card rv"><h3>Outils</h3><ul class="chips"><li>Visual Studio</li><li>VS Code</li><li>Git</li><li>TFS</li><li>SVN</li><li>IIS</li><li>VMware</li><li>Hyper-V</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="parcours">
+  <div class="wrap">
+    <h2>Parcours</h2>
+    <p class="sub">Vingt ans de missions, de la plus récente à la plus ancienne. Chaque mission est présentée de la même façon : cliquez pour voir le détail.</p>
+    <button class="btn" id="all" type="button">Tout déplier</button>
+    <div id="jobs"></div>
+  </div>
+</section>
+
+<section class="s" id="formation">
+  <div class="wrap">
+    <h2>Formation et langues</h2>
+    <div class="two">
+      <div class="card rv"><h3>Certification</h3><p><b>Microsoft Certified: Power Platform Fundamentals</b><br><span>2023</span></p><p>Formations PL-200, PL-400 et PL-600 : consultant fonctionnel, développeur et architecte de solutions Power Platform.<br><span>2022</span></p></div>
+      <div class="card rv"><h3>Diplôme</h3><p><b>Ingénieur en Communications et Réseaux</b><br><span>Diplôme national, École Nationale d’Ingénieurs, 2006</span></p></div>
+      <div class="card rv"><h3>Langues</h3><p><b>Arabe</b> <span>langue maternelle</span></p><p><b>Français</b> <span>lu, écrit et parlé, certifié B2</span></p><p><b>Anglais</b> <span>technique</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="s contact" id="contact">
+  <div class="wrap">
+    <h2>Travaillons ensemble</h2>
+    <p class="sub">Une mission SharePoint, .NET ou Power Platform à pourvoir ? Écrivez-moi.</p>
+    <a class="mail" href="mailto:a.jaouadi@gmail.com">a.jaouadi@gmail.com</a>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">© 2026 Aymen Jaouadi · Cergy, France</div></footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  try{var t=localStorage.getItem("theme");if(t)root.setAttribute("data-theme",t);}catch(e){}
+  document.getElementById("theme").addEventListener("click",function(){
+    var dark=root.getAttribute("data-theme")?root.getAttribute("data-theme")==="dark":matchMedia("(prefers-color-scheme:dark)").matches;
+    var n=dark?"light":"dark";root.setAttribute("data-theme",n);
+    try{localStorage.setItem("theme",n);}catch(e){}
+  });
+
+var G=[
+["Segment Elite","Consultant Senior MS .NET / SharePoint","Juin 2017 – aujourd’hui",[
+["ASTRH, archive sécurisée RH","EDF, DST – CSPRH","1 mois",["Archivage d’environ 150 000 demandes RH (50 Go) depuis l’API UKG PeopleDoc vers SharePoint Online.","Traitement par lots avec reprise sur erreur et gestion du throttling (environ 100 fois moins d’appels API), sous contraintes de sécurité C2."],"PnP PowerShell 7.4, API REST, Entra ID"],
+["Plan de Charges COMEX","EDF, DSTID – Direction de la Planification","3 mois",["Migration de SQL Server vers Google BigQuery via une API middleware, avec plus de 40 requêtes T-SQL converties en GoogleSQL.","Couche d’accès HTTP (pattern Strategy), transfert SFTP par clé SSH, cache client et appels API parallélisés."],"C# .NET 4.8, jQuery, Chart.js, BigQuery"],
+["MOBI, gestion de la mobilité","EDF, DIG – AMF","12 mois",["Application SPFx pour le cycle de vie des demandes de mobilité, avec des workflows par prestation : déménagement, logement, emploi du conjoint.","Validation multi-étapes, tableau de bord, notifications, export Excel, historique et enquêtes de satisfaction."],"SPFx, React 17, TypeScript, Fluent UI, PnPjs, Power Automate"],
+["Audit de l’application e-FEP","EDF, DPNT – DIPNN","1 mois",["Audit de l’application et restitution du rapport d’audit."],"SharePoint"],
+["EASYFORM, demandes de formation","EDF, DTEO – CSP RH","12 mois",["Cadrage, puis développement du MVP et de la V1 : demandes individuelles, sessions collectives, administration et matrice des accès.","Timer Jobs de chargement Excel, de reporting MOA et d’archivage."],"SharePoint 2016, C#, jQuery, Chart.js, CSOM, JSOM"],
+["SI-CHANTIER, V1, V2 et V3","EDF, DPNT – DTEAM – ULM","18 mois",["Spécifications et développement des modules FNC (fiche de non-conformité) et BPC (bilan partenarial croisé), avec workflows de validation.","Reporting, tableaux de bord, Timer Job d’archivage et bandeau correctif de la V1."],"SharePoint 2016, C#, jQuery, Bootstrap, CSOM, JSOM"],
+["DECI v2, cadeaux et invitations","EDF, DECG","10 mois",["Déclaration des cadeaux et invitations offerts, reçus ou refusés, avec déclaration pour autrui, seuils et devises par entité.","Timer Job hebdomadaire de mise à jour des entités depuis l’annuaire GARDIAN."],"SharePoint 2016, C#, AngularJS, DataTables, CSOM"],
+["Accès Datacenter, V1 à V2.2","EDF, DSIT","18 mois",["Gestion des accès, livraisons et accès dérogatoires par workflows, avec enquêtes administratives pour les zones à accès restreint.","Migration de SharePoint 2013 (V1) vers 2016 (V2)."],"SharePoint 2013 et 2016, Workflow Manager, AngularJS"],
+["Colibri, contrats de partenariat (GCP v2)","EDF, Direction R&D","8 mois",["Fiches de contrats et avenants, reporting par contrat et par partenaire, workflow de validation.","Outil de migration des données de Lotus Notes vers SharePoint."],"SharePoint 2013, Workflow Manager, AngularJS"],
+["GAIS, aide intersites","EDF, DPNT","10 mois",["Gestion des missions d’aide intersites par workflow, saisie unitaire ou en masse, vues par habilitation.","Génération des lettres de mission et fiches d’évaluation, rapports graphiques."],"SharePoint 2013, Chart.js, CSOM, JSOM"],
+["Intranet ALTAREA COGEDIM","Exakis","3 mois",["Portail intranet sur SharePoint Online et plusieurs web parts SPFx."],"SPFx, React, REST API"]]],
+["Business & Decision Tunisie","Chef de projet junior, Team Leader, Consultant Senior","Avril 2013 – mai 2017",[
+["Core Interface Application (CIA)","Bank ABC · Chef de projet junior","3 mois",["Audit et migration du Framework 2.0 vers 4.5, avec assemblies d’interopérabilité depuis des bibliothèques COM C/C++.","Cadrage, spécifications fonctionnelles et détaillées, suivi de projet."],"VB.NET, Oracle, SQL Server"],
+["Migration du workflow des réclamations","ATB Bank","3 mois",["Solution de saisie et traitement des réclamations par workflows selon le type (monétique, retail, corporate, réglementaire).","Livraison en packages : branding, core, config, UI et workflow."],"SharePoint 2013, C#, SPServices.js, CSOM"],
+["Maintenance évolutive d’applications","Qualco France / CreanSoft · Team Lead .NET","9 mois",["Suivi de projets (DebtorWeb, QTransform, QExtract), audits d’applications et refonte de QExtract.","Développement d’EDI, d’une application de conversion Word XML vers PDF et migration de base de données pour VEOLIA."],"WPF, MVVM, SQL Server, Entity Framework"],
+["CreansWEB, espace client créancier","CreanSoft","3 mois",["Conception de la base, back-office de paramétrage et front-office : dossiers, communications, statistiques.","EDI de génération de connecteurs et envoi d’emails via MailGun."],"ASP.NET MVC, Knockout, Entity Framework"],
+["WeMercure, géolocalisation","AIRWEB – Generali","1 mois",["Application desktop de géolocalisation, synchronisation avec Outlook, cartes en ligne et hors ligne, transfert Bluetooth vers mobile."],"WPF, Leaflet JS, MVVM"],
+["BDEMF, base de données économiques et financières","BEAC","9 mois",["Gestion de projet, conception et développement du portail : import de lots Excel, modèles dynamiques, workflow de validation.","Scripts PowerShell d’export XML et de purge des lots."],"SharePoint 2013, ASP.NET, Knockout, SQL Server"],
+["PackOut, traçabilité du packaging","SAGEMCOM","9 mois",["Cadrage, architecture, base Oracle, back-office et front-office des opérations de packaging et de contrôle qualité.","Service Windows de pré-provisioning."],"ASP.NET MVC, SignalR, Oracle, Entity Framework"],
+["Module de gestion des références","AIRWEB – Cofely","2 mois",["Interfaces de gestion des catégories et des cas clients, et API Web JSON."],"ASP.NET MVC, Knockout, SQL Server"],
+["Intranet","DELICE DANONE","3 mois",["Installation de SQL Server 2012 et SharePoint 2013, services de recherche et de profils, BI Center, modèle de site."],"SharePoint 2013, SharePoint Designer"],
+["Intranet CDI, prêt documentaire","GAT","2 mois",["Module de prêt documentaire : listes, web parts, gestion des mises en garde et statistiques."],"SharePoint 2010, C#"],
+["Refonte du portail","CMA-CGM","2 mois",["Web service d’import du contenu CMS depuis SharePoint, synchronisation des ressources et pages CMS."],"ASP.NET MVC, Oracle"]]],
+["Global Soft Net","Ingénieur Étude et Développement","Février 2012 – avril 2013",[
+["Recouvrement Pro","Tunisie Recouvrement","14 mois",["Évolution du progiciel : migration vers .NET 4.0, reportings Highcharts, optimisation des requêtes et de l’import des créances.","Nouveaux services : saisie RAD, SMS et courriers, traitements en masse."],"ASP.NET, SQL Server, Infragistics, Crystal Reports"]]],
+["PHP Attitude","Ingénieur Étude et Développement","Mai 2009 – janvier 2012",[
+["IdeaValue Open, innovation participative","Motivation Factory","33 mois",["Modules de modération et d’interface utilisateur : assistant de création, CMS, rapports, droits d’accès, emailing.","Service Windows de newsletters ; trois mois sur site en France en 2011."],"ASP.NET, LINQ, SQL Server, DevExpress"]]],
+["Evatys","Ingénieur Étude et Développement","Décembre 2006 – mars 2009",[
+["True TimeSheet","IDM","7 mois",["Cadrage et développement : back-offices, deux web services WCF, client léger, service d’alertes email et SMS, paiement PayPal."],"ASP.NET, WCF, SQL Server 2005"],
+["Maquette PHEB","PHD","3 mois",["Réalisation d’une maquette du projet."],"ASP.NET, C#, ExtJS.NET"],
+["Portail SPMF","SPMF","3 mois",["Portail Joomla : authentification, accès, recrutement en ligne, forum et mailing."],"Joomla, PHP, MySQL"],
+["Portail AFOP","AFOP","3 mois",["Portail Joomla : authentification, enquêtes et gestion des offres."],"Joomla, PHP, MySQL"]]],
+["TIPS Informatique","Stage de fin d’études","Février – juin 2006",[
+["SIPPhone, téléphonie IP","TIPS Informatique","4 mois",["Application de téléphonie IP pour Pocket PC implémentant le protocole SIP."],".NET Compact Framework, C#"]]]
+];
+function E(t){return String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;");}
+var out="";
+G.forEach(function(g){
+  out+='<div class="grp"><header><h3>'+E(g[0])+'</h3><p>'+E(g[1])+' · '+E(g[2])+'</p></header>';
+  g[3].forEach(function(m){
+    out+='<details class="job"><summary><b>'+E(m[0])+'</b><i>'+E(m[2])+'</i><em>'+E(m[1])+'</em></summary><div class="body"><ul>'+
+      m[3].map(function(x){return "<li>"+E(x)+"</li>";}).join("")+'</ul><p>'+E(m[4])+'</p></div></details>';
+  });
+  out+='</div>';
+});
+document.getElementById("jobs").innerHTML=out;
+var all=document.getElementById("all"),open=false;
+all.addEventListener("click",function(){
+  open=!open;
+  document.querySelectorAll("#jobs details").forEach(function(d){d.open=open;});
+  all.textContent=open?"Tout replier":"Tout déplier";
+});
+  requestAnimationFrame(function(){document.getElementById("tl").classList.add("go");});
+  var pg=document.getElementById("pg");
+  function prog(){var h=document.documentElement.scrollHeight-innerHeight;pg.style.transform="scaleX("+(h>0?scrollY/h:0)+")";root.style.setProperty("--sy",Math.round(scrollY));}
+  var secs=document.querySelectorAll("main>section");
+  if("IntersectionObserver" in window){
+    var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)document.body.setAttribute("data-sec",[].indexOf.call(secs,e.target));});},{rootMargin:"-45% 0px -50% 0px"});
+    secs.forEach(function(s){so.observe(s);});
+  }
+  addEventListener("scroll",prog,{passive:true});prog();
+  var els=document.querySelectorAll(".rv:not(.in)");
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{threshold:.12});
+    els.forEach(function(el,i){el.style.transitionDelay=(i%3)*80+"ms";io.observe(el);});
+  }else{els.forEach(function(el){el.classList.add("in");});}
+})();
+</script>
+</body>
+</html>
